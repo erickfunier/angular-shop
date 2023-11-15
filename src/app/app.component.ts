@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { Recipe } from './recipes/recipe.model';
 
 @Component({
   selector: 'app-root',
@@ -7,8 +8,17 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   loadedFeature = 'recipe';
+  selectedRecipe: Recipe = undefined;
+  @Input() recipe: Recipe;
   
   onNavigate(feature: string) {
     this.loadedFeature = feature;
   }
+
+  onRecipeSelected(recipe: Recipe) {
+    this.selectedRecipe = recipe;
+    console.log(recipe);
+  }
+
+
 }
