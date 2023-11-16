@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnChanges } from '@angular/core';
 import { Recipe } from '../recipe.model';
 
 @Component({
@@ -6,8 +6,21 @@ import { Recipe } from '../recipe.model';
   templateUrl: './recipe-modal.component.html',
   styleUrl: './recipe-modal.component.css'
 })
-export class RecipeModalComponent {
-  @Input() recipe: Recipe;
-  @Input('openModal') openModal : boolean
-  
+export class RecipeModalComponent implements OnChanges {
+  _recipe: Recipe;
+  @Input('recipe')
+  set recipe(recipe: Recipe){
+    this._recipe = recipe;
+    $('#btnModal').trigger('click');
+  }
+
+  get recipe() {
+    return this._recipe;
+  }
+
+   ngOnChanges() {
+    //this.recipeInput = undefined;
+    
+   }
+
 }

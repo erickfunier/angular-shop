@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Recipe } from './recipes/recipe.model';
 
 @Component({
@@ -8,15 +8,19 @@ import { Recipe } from './recipes/recipe.model';
 })
 export class AppComponent {
   loadedFeature = 'recipe';
+  @Output() selectedRecipeEvent = new EventEmitter<Recipe>();
   selectedRecipe: Recipe = undefined;
   @Input() recipe: Recipe;
+  
   
   onNavigate(feature: string) {
     this.loadedFeature = feature;
   }
 
   onRecipeSelected(recipe: Recipe) {
+    this.selectedRecipe = undefined;
     this.selectedRecipe = recipe;
+    //this.selectedRecipeEvent.emit(recipe);
     console.log(recipe);
   }
 
