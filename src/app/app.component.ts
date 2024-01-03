@@ -11,18 +11,5 @@ export class AppComponent {
   @Output() selectedRecipeEvent = new EventEmitter<Recipe>();
   selectedRecipe: Recipe = undefined;
   @Input() recipe: Recipe;
-  
-  
-  onNavigate(feature: string) {
-    this.loadedFeature = feature;
-  }
-
-  onRecipeSelected(recipe: Recipe) {
-    this.selectedRecipe = undefined;
-    this.selectedRecipe = recipe;
-    //this.selectedRecipeEvent.emit(recipe);
-    console.log(recipe);
-  }
-
 
 }
